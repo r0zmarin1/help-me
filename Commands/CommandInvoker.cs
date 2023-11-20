@@ -21,7 +21,7 @@ namespace help_me.Commands
             }
             while (command != "exit");
             if (command == "help"):
-                Console.WriteLine(List<comm>
+                Console.WriteLine(List<comm>dd
 
         }
     }
