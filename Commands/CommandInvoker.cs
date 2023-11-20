@@ -8,7 +8,12 @@ namespace help_me.Commands
 {
     internal class CommandInvoker
     {
-        public CommandManager CommandManager { get; set; }
+        public CommandManager commandManager;
+
+        public CommandInvoker(CommandManager commandManager)
+        {
+            this.commandManager = commandManager;
+        }
 
         public void Run()
         {
@@ -17,11 +22,13 @@ namespace help_me.Commands
             {
                 Console.WriteLine("Введите команду");
                 command = Console.ReadLine();
-                CommandManager.Execute(command);
+                if (command == "help")
+                    commandManager.ListCommands();
+                else
+                    commandManager.Execute(command);
             }
             while (command != "exit");
-            if (command == "help"):
-                Console.WriteLine(List<comm>dd
+            
 
         }
     }

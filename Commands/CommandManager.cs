@@ -8,30 +8,26 @@ using System.Threading.Tasks;
 public class CommandManager
 {
     Dictionary<string,(string descr, CommandUser)> commands = new();
+
     public void Execute(string? command)
     {
         if (commands.ContainsKey(command))
         {
-            Console.WriteLine(commands["test"].descr);
+            Console.WriteLine(commands[command].descr);
             commands[command].Item2.Execute();
         }
     }
-
-    public void RegisterDescr(string descr, CommandUser commandUser)
-    {
-        commands.Add("test", ("описание команды", commandUser));
-    }
  
-    public void RegisterCommand(string command, CommandUser commandUser)
+    public void RegisterCommand(string command, string descr, CommandUser commandUser)
     {
-        commands.Add(command, ("Добавление команды", commandUser));
+        commands.Add(command, (descr, commandUser));
     }
 
-    public void ListCommands (string text)
+    public void ListCommands ()
     {
         foreach(var command in commands.Keys)
         {
-            Console.WriteLine($"{command} - {commands["test"].descr}");
+            Console.WriteLine($"{command} - {commands[command].descr}");
         }
     }
 }
